@@ -11,7 +11,7 @@ export default function MainPage() {
   const movePage = useNavigate();
   function onSearch() {
     axios
-      .get(`localhost:5000/api/v1/resume/search?word${keyWord}`)
+      .get(`http://localhost:5000/api/v1/resume/search?word${keyWord}`)
       .then(() => {
         console.log("Done");
       })
@@ -29,16 +29,16 @@ export default function MainPage() {
     // //setFile(e.target.files);
   }
   function onClick() {
-    // axios
-    //   .post(`localhost:5000/api/v1//resume/upload/`, {
-    //     pdffile: file,
-    //   })
-    //   .then(() => {
-    //     console.log("Done");
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .post(`localhost:5000/api/v1//resume/upload/`, {
+        pdffile: file,
+      })
+      .then(() => {
+        console.log("Done");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setA(true);
   }
 
