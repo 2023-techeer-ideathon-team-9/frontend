@@ -23,7 +23,7 @@ export default function ListPage({ word }: Props) {
   //   content.forEach((text) => {
   //     return <div>{text}</div>;
   //   });
-
+  // }
   return (
     <div className={styles.container}>
       {content.map((text, index) => (
