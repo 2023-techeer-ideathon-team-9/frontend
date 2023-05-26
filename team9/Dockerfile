@@ -1,21 +1,26 @@
-# Node.js 이미지를 사용합니다.
+
+# node 버전 선택
 FROM node
 
-# 작업 디렉토리를 설정합니다.
+# 도커 컨테이너 내부의 작업 디렉토리 결정
 WORKDIR /app
 COPY . /app/
 
-# 호스트 시스템의 package.json과 package-lock.json을 컨테이너의 작업 디렉토리로 복사합니다.
-COPY package*.json ./
+# 외부 패키지 설치를 위해 package.json과yarn.lock 파일 복사
+COPY ./package.json ./
+COPY ./yarn.lock ./
 
-# 필요한 npm 패키지를 설치합니다.
-RUN npm install
+# 패키지 설치
+RUN yarn install 
 
-# 소스 코드를 컨테이너의 작업 디렉토리로 복사합니다.
+# 나머지 모두 복사
 COPY . .
 
-# React 애플리케이션을 빌드합니다.
-RUN npm run build
+# 빌드하는 부분 추가
+RUN yarn build 
 
-# 개발 서버를 실행합니다.
-CMD ["npm", "start"]
+# 도커 컨테이너에 접근할 수 있게 포트 열어주기
+EXPOSE 3000
+
+# 앱 실행시키기
+CMD [ "yarn", "build" ]
