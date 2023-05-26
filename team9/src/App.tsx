@@ -4,7 +4,8 @@ import viteLogo from "/vite.svg";
 //import { routes } from "@/Routes";
 import { Route, Routes, useRoutes } from "react-router-dom";
 import "./App.css";
-import MainPage from "./pages/mainpage";
+import MainPage from "./pages/mainPage/mainpage";
+import ListPage from "./pages/listPage/searchPage";
 
 function App() {
   //const elem = useRoutes(routes);
@@ -12,6 +13,7 @@ function App() {
     <>
       <Routes>
         <Route path="/home" element={<MainPage />}></Route>
+        <Route path="/list" element={<ListPage />}></Route>
       </Routes>
     </>
   );
