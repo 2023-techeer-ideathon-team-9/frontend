@@ -2,6 +2,7 @@ import styles from "./styles.module.scss";
 import pdfLogo from "../../assets/pdf.png";
 import { useState } from "react";
 import axios from "axios";
+import ListPage from "../listPage/searchPage";
 export default function MainPage() {
   const [keyWord, setKeyWord] = useState("");
   const [file, setFile] = useState<any>();
@@ -23,6 +24,9 @@ export default function MainPage() {
     e.target.files !== null ? setFile(!e.target.files[0]) : "";
     // //setFile(e.target.files);
   }
+  function onClick() {
+    return <ListPage word={keyWord} />;
+  }
   console.log(keyWord);
   console.log(file);
   return (
@@ -43,7 +47,7 @@ export default function MainPage() {
         <label className={styles.Label} htmlFor="file-input">
           <img className={styles.icon} src={pdfLogo} alt="" />
         </label>
-        <button className={styles.btn2}></button>
+        <button className={styles.btn2} onClick={onClick}></button>
       </div>
     </div>
   );

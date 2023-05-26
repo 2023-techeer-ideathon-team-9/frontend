@@ -6,28 +6,24 @@ type Props = {
   word: string;
 };
 //{ word }: Props
-export default function ListPage() {
-  const [content, SetContent] = useState([]);
+export default function ListPage({ word }: Props) {
+  const [content, SetContent] = useState<any>([]);
+
   const a = ["a", "b", "b", "b", "b", "b", "b"];
   useEffect(() => {
-    async function get() {
-      const result = await axios.get(
-        ` hhtp//localhost:5000/api/v1/resume/search?word=${word}`
-      );
-    }
-    get();
-    return;
+    axios
+      .post(` http://localhost:5000/api/v1/resume/search_keyword`, {
+        keyword: { word },
+      })
+      .then((res) => {
+        SetContent(res);
+      });
   }, []);
-  {
-    content.forEach((text) => {
-      return <div>{text}</div>;
-    });
-  }
-  function List() {
-    content.forEach((text) => {
-      return <div>{text}</div>;
-    });
-  }
+  // function List() {
+  //   content.forEach((text) => {
+  //     return <div>{text}</div>;
+  //   });
+
   return (
     <div className={styles.container}>
       {content.map((text, index) => (
