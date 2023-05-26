@@ -3,3 +3,11 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
+
+.bank {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.contents {
+}
